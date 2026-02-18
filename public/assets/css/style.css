@@ -1,0 +1,192 @@
+:root{
+  --black:#0b0b0b;
+  --red:#6e0000;
+  --white:#fff;
+  --card:#ffffffd0;
+  --pill:#ff9f9f;
+}
+
+body{ background:#fff; }
+
+/* HEADER */
+.topbar{
+  background:var(--black);
+  color:var(--white);
+  padding:18px 0;
+}
+.topbar__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.topbar__logo{
+  background:#fff;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:150px;
+  height:110px;
+}
+.topbar__logo img{ max-width:100%; max-height:100%; }
+
+.topbar__nav{
+  display:flex;
+  gap:60px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+.topbar__nav a{
+  color:#fff;
+  font-size: 22px;
+  text-decoration:none;
+}
+.topbar__nav a.is-active{ text-decoration:underline; }
+
+.topbar__user{ color:#fff; text-decoration:none; font-size:28px; }
+
+/* ZONE HERO (fond + voile rouge) */
+.hero {
+  position: relative;
+  min-height: 720px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Accueil */
+.hero-home {
+  background-image: url("/assets/css/img/pexels-victorfreitas-2261477.jpg");
+}
+
+/* Compétitions */
+.hero-competitions {
+  background-image: url("/assets/css/img/pexels-victorfreitas-2261483.jpg");
+}
+
+/* Inscriptions */
+.hero-inscriptions {
+  background-image: url("/assets/css/img/pexels-anete-lusina-16513597.jpg");
+}
+
+/* Connexion */
+.hero-login {
+  background-image: url("/assets/css/img/pexels-cottonbro-4753897.jpg");
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background: rgba(110,0,0,.35);
+}
+.hero__content{
+  position:relative;
+  color:#fff;
+  padding:60px 0;
+}
+.hero__title{
+  text-align:center;
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:28px;
+}
+.hero__text{
+  max-width:820px;
+  margin:0 auto;
+  font-size:18px;
+  line-height:1.4;
+}
+
+/* CARTES (compétitions + formulaires) */
+.glass{
+  background: var(--card);
+  border-radius:26px;
+  padding:28px;
+}
+
+.comp-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:44px;
+  margin-top:30px;
+}
+.comp-card{
+  background: var(--card);
+  border-radius:10px;
+  padding:22px;
+  text-align:left;
+}
+a.pill-btn,
+button.pill-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 12px 22px !important;
+  border-radius: 999px !important;
+
+  background: #ff9f9f !important;
+  color: #000 !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+
+  border: 0 !important;
+  cursor: pointer !important;
+
+  /* empêche certains styles "bizarres" */
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+a.pill-btn:hover,
+button.pill-btn:hover {
+  filter: brightness(0.95) !important;
+  transform: scale(1.02);
+}
+
+
+.pill-row{ display:flex; gap:18px; margin-top:18px; }
+
+/* FOOTER */
+.footer{
+  background:var(--black);
+  color:#fff;
+  padding:28px 0 10px;
+}
+.footer__inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.footer__center{ text-align:center; }
+.footer__social {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  font-size: 38px;
+}
+
+.social-icon {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  color: #ff9f9f;
+  transform: scale(1.1);
+}
+
+.footer__copyright{
+  text-align:center;
+  margin-top:10px;
+  opacity:.9;
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .topbar__nav{ gap:24px; }
+  .comp-grid{ grid-template-columns: 1fr; }
+  .hero__title{ font-size:32px; }
+}
