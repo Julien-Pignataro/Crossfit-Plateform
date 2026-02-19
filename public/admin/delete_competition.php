@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . "/../../includes/db.php";
+require __DIR__ . "/../../includes/admin_check.php";
 
 $id = $_GET["id"] ?? null;
 

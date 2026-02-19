@@ -3,6 +3,7 @@ $title = "Créer compétition";
 
 require __DIR__ . "/../../includes/header.php";
 require __DIR__ . "/../../includes/db.php";
+require __DIR__ . "/../../includes/admin_check.php";
 
 $message = "";
 

@@ -1,5 +1,5 @@
 <?php
-$title = "Connexion";
+$title = "Inscription";
 
 require __DIR__ . "/../includes/header.php";
 require __DIR__ . "/../includes/db.php";
@@ -11,20 +11,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
+    if ($email && $password) {
 
-    $user = $stmt->fetch();
+        $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    if ($user && password_verify($password, $user["password"])) {
+        $stmt = $pdo->prepare("
+            INSERT INTO users (email, password)
+            VALUES (?, ?)
+        ");
 
-        $_SESSION["user"] = $user;
-
-        header("Location: /index.php");
-        exit;
+        try {
+            $stmt->execute([$email, $hash]);
+            $message = "✅ Compte créé ! Vous pouvez vous connecter.";
+        } catch (Exception $e) {
+            $message = "❌ Email déjà utilisé.";
+        }
 
     } else {
-        $message = "❌ Email ou mot de passe incorrect.";
+        $message = "❌ Merci de remplir tous les champs.";
     }
 }
 ?>
@@ -32,12 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <section class="hero hero-login">
   <div class="container-xxl hero__content">
 
-    <h1 class="hero__title">Connexion</h1>
+    <h1 class="hero__title">Créer un compte</h1>
 
     <div class="glass" style="max-width:600px;">
 
         <?php if ($message): ?>
-            <div class="alert alert-danger"><?= $message ?></div>
+            <div class="alert alert-info"><?= $message ?></div>
         <?php endif; ?>
 
         <form method="POST">
@@ -53,14 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
 
             <button class="pill-btn" type="submit">
-                Connexion
+                Créer un compte
             </button>
 
         </form>
-
-        <div class="mt-3">
-            <a href="/register.php">Créer un compte</a>
-        </div>
 
     </div>
 
