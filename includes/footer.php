@@ -26,8 +26,13 @@ document.addEventListener("click", function(e){
   const btn = e.target.closest("[data-bs-target='#wodModal']");
   if(!btn) return;
 
-  document.getElementById("wodModalTitle").textContent =
+document.getElementById("wodModalTitle").textContent =
     "Fiche WOD — " + (btn.dataset.title || "");
+
+const desc = (btn.dataset.description || "").trim();
+
+document.getElementById("wodDesc").textContent = desc;
+document.getElementById("wodInfo").style.display = desc ? "block" : "none";
 
   renderWodList("wodRx", btn.dataset.wodRx);
   renderWodList("wodInt", btn.dataset.wodInt);
