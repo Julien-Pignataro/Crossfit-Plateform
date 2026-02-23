@@ -28,16 +28,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $titleComp = $_POST["title"] ?? "";
     $date = $_POST["event_date"] ?? "";
     $city = $_POST["city"] ?? "";
+    $wod_rx = $_POST["wod_rx"] ?? "";
+    $wod_intermediate = $_POST["wod_intermediate"] ?? "";
+    $wod_scaled = $_POST["wod_scaled"] ?? "";
 
     if ($titleComp && $date && $city) {
 
         $stmt = $pdo->prepare("
             UPDATE competitions
             SET title = ?, event_date = ?, city = ?
+            wod_rx = ?, wod_intermediate = ?, wod_scaled = ?
             WHERE id = ?
         ");
 
-        $stmt->execute([$titleComp, $date, $city, $id]);
+       $stmt->execute([
+            $titleComp,
+            $date,
+            $city,
+            $wod_rx,
+            $wod_intermediate,
+            $wod_scaled,
+            $id
+         ]);
 
         $message = "✅ Compétition modifiée avec succès";
 
@@ -87,6 +99,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                        class="form-control"
                        value="<?= htmlspecialchars($competition["city"]) ?>"
                        required>
+            </div>
+
+            <div class="mb-3">
+               <label>WOD RX</label>
+               <textarea name="wod_rx" class="form-control" rows="3"><?= htmlspecialchars($competition["wod_rx"] ?? "") ?></textarea>
+            </div>
+
+            <div class="mb-3">
+               <label>WOD Intermédiaire</label>
+               <textarea name="wod_intermediate" class="form-control" rows="3"><?= htmlspecialchars($competition["wod_intermediate"] ?? "") ?></textarea>
+            </div>
+
+            <div class="mb-3">
+               <label>WOD Scaled</label>
+               <textarea name="wod_scaled" class="form-control" rows="3"><?= htmlspecialchars($competition["wod_scaled"] ?? "") ?></textarea>
             </div>
 
             <button class="pill-btn" type="submit">

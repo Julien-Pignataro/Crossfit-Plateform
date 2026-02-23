@@ -94,6 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $competition_id) {
                     <option value="Rx">Rx</option>
                     <option value="Intermédiaire">Intermédiaire</option>
                     <option value="Scaled">Scaled</option>
+                    <option value="Spectateur">Spectateur</option>
                 </select>
             </div>
 
