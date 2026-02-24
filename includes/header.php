@@ -17,35 +17,51 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 <header class="topbar">
   <div class="container-xxl topbar__inner">
-    <a class="topbar__logo" href="/index.php">
-      <img src="assets/css/img/C175DA62-A353-4EA3-9C65-9C86E1E6B492.PNG" alt="Logo">
+
+    <!-- LOGO (chemin absolu + pas de "=") -->
+    <a class="topbar__logo" href="/index.php" aria-label="Accueil">
+      <img src="/assets/css/img/C175DA62-A353-4EA3-9C65-9C86E1E6B492.PNG" alt="Logo">
     </a>
 
-    <nav class="topbar__nav">
+    <!-- NAV (desktop) -->
+    <nav class="topbar__nav topbar__nav--desktop">
       <a href="/index.php" class="<?= ($_SERVER['SCRIPT_NAME']==='/index.php')?'is-active':'' ?>">HOME</a>
       <a href="/competitions.php" class="<?= ($_SERVER['SCRIPT_NAME']==='/competitions.php')?'is-active':'' ?>">COMPETITIONS</a>
       <a href="/inscriptions.php" class="<?= ($_SERVER['SCRIPT_NAME']==='/inscriptions.php')?'is-active':'' ?>">INSCRIPTIONS</a>
     </nav>
 
+    <!-- BURGER (mobile) -->
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- ZONE COMPTE (1 seule fois) -->
     <?php if (isset($_SESSION["user"])): ?>
-  <div class="d-flex align-items-center gap-3">
-    <a class="topbar__user" href="/mes_inscriptions.php" aria-label="Mon compte">
-      <span>Mon compte</span>
-      <i class="fa-solid fa-dumbbell"></i>
-    </a>
+      <div class="topbar__account">
+        <a class="topbar__user" href="/mes_inscriptions.php" aria-label="Mon compte">
+          <span>Mon compte</span>
+          <i class="fa-solid fa-dumbbell"></i>
+        </a>
 
-    <a class="topbar__user" href="/logout.php" aria-label="Déconnexion" title="Déconnexion">
-      <i class="fa-solid fa-right-from-bracket"></i>
-    </a>
-  </div>
-<?php else: ?>
-  <a class="topbar__user" href="/login.php" aria-label="Compte">
-    <span>Mon compte</span>
-    <i class="fa-solid fa-dumbbell"></i>
-  </a>
+        <a class="topbar__logout" href="/logout.php" aria-label="Déconnexion" title="Déconnexion">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+      </div>
+    <?php else: ?>
+      <a class="topbar__user" href="/login.php" aria-label="Compte">
+        <span>Mon compte</span>
+        <i class="fa-solid fa-dumbbell"></i>
+      </a>
+    <?php endif; ?>
 
-<?php endif; ?>
   </div>
+
+  <!-- NAV (mobile) -->
+  <nav class="topbar__nav topbar__nav--mobile" id="mobileMenu">
+    <a href="/index.php" class="<?= ($_SERVER['SCRIPT_NAME']==='/index.php')?'is-active':'' ?>">HOME</a>
+    <a href="/competitions.php" class="<?= ($_SERVER['SCRIPT_NAME']==='/competitions.php')?'is-active':'' ?>">COMPETITIONS</a>
+    <a href="/inscriptions.php" class="<?= ($_SERVER['SCRIPT_NAME']==='/inscriptions.php')?'is-active':'' ?>">INSCRIPTIONS</a>
+  </nav>
 </header>
 
 <main>

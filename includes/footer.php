@@ -1,4 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 function escapeHtml(str){
   return String(str).replace(/[&<>"']/g, (m) => ({
@@ -26,13 +27,13 @@ document.addEventListener("click", function(e){
   const btn = e.target.closest("[data-bs-target='#wodModal']");
   if(!btn) return;
 
-document.getElementById("wodModalTitle").textContent =
+  document.getElementById("wodModalTitle").textContent =
     "Fiche WOD — " + (btn.dataset.title || "");
 
-const desc = (btn.dataset.description || "").trim();
+  const desc = (btn.dataset.description || "").trim();
 
-document.getElementById("wodDesc").textContent = desc;
-document.getElementById("wodInfo").style.display = desc ? "block" : "none";
+  document.getElementById("wodDesc").textContent = desc;
+  document.getElementById("wodInfo").style.display = desc ? "block" : "none";
 
   renderWodList("wodRx", btn.dataset.wodRx);
   renderWodList("wodInt", btn.dataset.wodInt);
@@ -60,13 +61,29 @@ document.getElementById("wodInfo").style.display = desc ? "block" : "none";
 
     <div class="footer__social">
       <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
     </div>
   </div>
 
   <div class="footer__copyright">Copyright 2026</div>
 </footer>
+
+<!-- ✅ BURGER SCRIPT AVANT main.js -->
+<script>
+(function(){
+  const burger = document.querySelector(".burger");
+  const menu = document.getElementById("mobileMenu");
+  if (!burger || !menu) return;
+
+  burger.addEventListener("click", function(){
+    menu.classList.toggle("is-open");
+    const open = menu.classList.contains("is-open");
+    burger.classList.toggle("is-open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+})();
+</script>
 
 <script src="/assets/js/main.js"></script>
 </body>

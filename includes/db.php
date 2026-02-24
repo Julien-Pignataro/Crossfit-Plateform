@@ -1,19 +1,19 @@
 <?php
 
-$host = '127.0.0.1';
-$db   = 'crossfit';
-$user = 'root';
-$pass = ''; // ton mot de passe MySQL
+$host = "mysql-julienp.alwaysdata.net";
+$port = 3306;
+
+$dbname = "julienp_crossfit";
+$user = "julienp";
+$pass = "CrossFitDB20"; // <- celui que tu viens de définir
+
+$dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
 
 try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$db;charset=utf8",
-        $user,
-        $pass
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-} catch (Exception $e) {
-    die('Erreur connexion BDD : ' . $e->getMessage());
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
+} catch (PDOException $e) {
+    die("Erreur connexion BDD : " . $e->getMessage());
 }
