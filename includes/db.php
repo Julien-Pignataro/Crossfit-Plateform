@@ -5,7 +5,7 @@ $port = 3306;
 
 $dbname = "julienp_crossfit";
 $user = "julienp";
-$pass = "CrossFitDB20"; // <- celui que tu viens de définir
+$pass = "CrossFitDB20"; 
 
 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
 

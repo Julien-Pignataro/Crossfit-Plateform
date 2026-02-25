@@ -91,7 +91,7 @@ $competitions = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </section>
 
-<!-- ✅ MODAL WOD (UNE SEULE FOIS) -->
+<!-- ✅ MODAL WOD -->
 <div class="modal fade" id="wodModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -103,7 +103,7 @@ $competitions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="modal-body">
 
-        <!-- ✅ description placée ici (propre) -->
+        <!-- ✅ description -->
       <div id="wodInfo" class="wod-info mb-3" style="display:none;">
         <div class="wod-info__badge">ℹ️ Infos</div>
         <div id="wodDesc" class="wod-info__text"></div>

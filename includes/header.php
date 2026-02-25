@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
   <title><?= isset($title) ? htmlspecialchars($title) : 'Crossfit' ?></title>
   <link rel="icon" href="/favicon.ico?v=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Bootstrap (simple + rapide) -->
+  <!-- Bootstrap (simple) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 <header class="topbar">
   <div class="container-xxl topbar__inner">
 
-    <!-- LOGO (chemin absolu + pas de "=") -->
+    <!-- LOGO -->
     <a class="topbar__logo" href="/index.php" aria-label="Accueil">
       <img src="/assets/css/img/C175DA62-A353-4EA3-9C65-9C86E1E6B492.PNG" alt="Logo">
     </a>
@@ -35,7 +35,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
       <span></span><span></span><span></span>
     </button>
 
-    <!-- ZONE COMPTE (1 seule fois) -->
+    <!-- ZONE COMPTE -->
     <?php if (isset($_SESSION["user"])): ?>
       <div class="topbar__account">
         <a class="topbar__user" href="/mes_inscriptions.php" aria-label="Mon compte">

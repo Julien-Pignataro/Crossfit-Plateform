@@ -69,7 +69,7 @@ document.addEventListener("click", function(e){
   <div class="footer__copyright">Copyright 2026</div>
 </footer>
 
-<!-- ✅ BURGER SCRIPT AVANT main.js -->
+<!-- ✅ BURGER SCRIPT -->
 <script>
 (function(){
   const burger = document.querySelector(".burger");

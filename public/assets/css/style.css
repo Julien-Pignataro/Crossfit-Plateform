@@ -95,7 +95,7 @@ a{ text-decoration:none; }
 
 /* Burger */
 .burger{
-  display:none;              /* visible seulement en mobile/tablette */
+  display:none;              
   width:44px;
   height:44px;
   border:0;
@@ -234,7 +234,7 @@ a{ text-decoration:none; }
   flex-wrap:wrap;
 }
 
-/* pousse seulement la zone boutons vers le bas */
+
 .comp-card .btn-row:first-of-type{
   margin-top:auto;
 }
@@ -279,7 +279,7 @@ a{ text-decoration:none; }
 .btn-row{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;        /* espace entre boutons */
+  gap:12px;        
   margin-top:12px;
 }
 
@@ -287,7 +287,7 @@ a{ text-decoration:none; }
 .btn-row-admin{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;        /* espace entre boutons admin */
+  gap:12px;        
   margin-top:12px;
 }
 
@@ -385,7 +385,7 @@ a{ text-decoration:none; }
   .topbar__nav--desktop{ display:none; }
   .burger{ display:block; }
 
-  .topbar__nav{ gap:24px; } /* au cas où */
+  .topbar__nav{ gap:24px; } 
   .comp-grid{ grid-template-columns:1fr; }
   .hero__title{ font-size:32px; }
 }
@@ -404,7 +404,7 @@ a{ text-decoration:none; }
   /* cache texte compte (icône seulement) */
   .topbar__user span{ display:none; }
 
-  /* enlève zoom hover sur mobile */
+  
   .topbar__user:hover,
   .topbar__logout:hover{ transform:none; text-shadow:none; }
 }
